@@ -23,16 +23,20 @@ def get_unis(url, tipo):
 
 def get_courses(uni):
     url = "https://www.dges.gov.pt/coloc/2021/col1listaredir.asp"
-    response = r.post(url, data={"CodEstab":uni['code'],"CodR":11,"listagem":"Lista+Ordenada+de+Candidatos"})
+    sleep(0.1)
+    response = r.get(url, data={"CodEstab":uni['code'],"CodR":11,"listagem":"Lista+Ordenada+de+Candidatos"})
     
-    try:
-        courses = [x for x in response.text.split("\n") if "option value" in x][0]
-    except:
+    
+    courses = [x for x in response.text.split("\n") if "option value" in x]
+    t = 1
+    while not courses:
         print("Demasiados pedidos" if "pedidos" in response.text else response.text)
-        sleep(1)
-        response = r.post(url, data={"CodEstab":uni['code'],"CodR":11,"listagem":"Lista+Ordenada+de+Candidatos"})
-        courses = [x for x in response.text.split("\n") if "option value" in x][0]
+        sleep(t)
+        t += 0.5
+        response = r.get(url, data={"CodEstab":uni['code'],"CodR":11,"listagem":"Lista+Ordenada+de+Candidatos"})
+        courses = [x for x in response.text.split("\n") if "option value" in x]
         
+    courses = courses[0]
     courses = courses.replace("\t","")
     courses = courses.replace("\r","")
     
@@ -62,7 +66,7 @@ def get_candidates(faculty_code,course_code):
             print("Demasiados pedidos" if "pedidos" in response.text else response.text)
             sleep(1)
             response = r.get(url,data=data)
-            soup = BeautifulSoup(response.content)
+            soup = BeautifulSoup(response.content, "html5lib")
             table = soup.findAll("table",attrs={"class":"caixa"})[-1].findAll("td")
             table = [x.text.strip() for x in table]
         except:
