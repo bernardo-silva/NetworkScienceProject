@@ -21,8 +21,8 @@ def get_unis(url, tipo):
         
     return universidades
 
-def get_courses(uni):
-    url = "https://www.dges.gov.pt/coloc/2021/col1listaredir.asp"
+def get_courses(uni,year):
+    url = f"https://www.dges.gov.pt/coloc/{year}/col1listaredir.asp"
     sleep(0.1)
     response = r.get(url, data={"CodEstab":uni['code'],"CodR":11,"listagem":"Lista+Ordenada+de+Candidatos"})
     
@@ -49,8 +49,8 @@ def get_courses(uni):
     return courses_dict
 
 
-def get_candidates(faculty_code,course_code):
-    url = "https://www.dges.gov.pt/coloc/2021/col1listaser.asp"
+def get_candidates(faculty_code,course_code,year):
+    url = f"https://www.dges.gov.pt/coloc/{year}/col1listaser.asp"
     data = {"CodEstab":f"{faculty_code}","CodCurso":course_code,
             # "search":"Continuar","CodR":11,"listagem":"Lista+Ordenada+de+Candidatos",
             "ids":0,"ide":9999,"Mx":9999}
