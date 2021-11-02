@@ -32,7 +32,8 @@ def create_network(year):
     return G
 
 def export_network(G):
-    if year := G.graph["year"]:
+    year = G.graph["year"]
+    if year:
         write_graphml(G,f"networks/graph_{year}.graphml")
         
 def import_networks():
