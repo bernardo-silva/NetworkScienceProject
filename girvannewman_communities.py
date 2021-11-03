@@ -18,7 +18,7 @@ networks = import_networks()
 print("\n".join([str(x) for x in networks]))
 
 for g in networks:
-    g.remove_edges_from([v for v in g.edges(data=True) if v[2]["weight"] < 10])
+    g.remove_edges_from([v for v in g.edges(data=True) if v[2]["weight"] < 80])
 
 for g in networks:
     g.remove_nodes_from(list(nx.isolates(g)))
@@ -65,12 +65,14 @@ def most_valuable_parallel(G):
 
 k = 4
 gn_iterator = [girvan_newman(g,most_valuable_parallel) for g in networks]
-limited = [itertools.takewhile(lambda c: max([len(x) for x in c]) >= 300, comp) for comp in gn_iterator]
+limited = [itertools.takewhile(lambda c: max([len(x) for x in c]) >= 150, comp) for comp in gn_iterator]
+
 
 gn_comms = []
 start = time.time()
 
 for l,year in zip(limited,range(2018,2022)):
+    gn_comms = []
     for communities in l:
         # gn_comms = [tuple(c for c in comm) for comm in communities]
         com = tuple(list(c) for c in communities)
