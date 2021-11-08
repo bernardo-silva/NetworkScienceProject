@@ -22,6 +22,6 @@ The folder [Networks Info]{/Networks Info} contains information about every node
 
 ---
 
-![image 1](images/modularity_communities_by_field.svg)
+![image 1](images/modularity_communities_by_field_gh.svg)
 
-![image 2](images/modularity_communities_by_field_extra.svg)
+![image 2](images/modularity_communities_by_field_extra_gh.svg)
