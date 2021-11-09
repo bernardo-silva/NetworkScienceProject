@@ -16,7 +16,7 @@ If you want to run the code, the main dependencies are:
     tqdm
     tabulate
     
-The folder [Networks Info](Networks Info/) contains information about every node of the networks.
+The folder [Networks Info](Networks\ Info/) contains information about every node of the networks.
 The folder [images](images/) contains some images.
 
 ## Greedy Modularity Communities with R&B parameter
