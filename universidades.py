@@ -80,6 +80,3 @@ def get_candidates(faculty_code,course_code,year):
             candidates.append(table[i]+table[i+1])
     
     return candidates
-
-if __name__ == "__main__":
-    get_candidates("0906","L188")
