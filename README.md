@@ -1,8 +1,8 @@
-# INSERIR TITULO
+# Finding Deeper Community Structures: The Networks of Portuguese Universities
 
-This project was elaborated for the class of Complex Analysis.
+This project was elaborated as a project for the class of Complex Analysis.
 
-The final report can be read HERE.
+The final report can be read [here](report.pdf).
 
 If you want to run the code, the main dependencies are:
 
